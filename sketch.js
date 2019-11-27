@@ -26,8 +26,9 @@ function mousePressed() {
   if (intro.isPlaying() && (mouseX > width / 10 && mouseX < width / 10 + width / 20) && (mouseY > width / 40 && mouseY < width / 20 + width / 20)) {
     intro.stop();
     speed = 0;
+  }
 
-  } else if((mouseX > width / 40 && mouseX < width / 40 + width / 20) && (mouseY > width / 40 && mouseY < width / 20 + width / 20)){
+  if((mouseX > width / 40 && mouseX < width / 40 + width / 20) && (mouseY > width / 40 && mouseY < width / 20 + width / 20)){
     intro.play();
     speed = 0;
   }
