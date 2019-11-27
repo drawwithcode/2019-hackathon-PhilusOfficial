@@ -1,7 +1,6 @@
 var intro;
 var space;
 var spaceship;
-var stop;
 var play;
 var help = 0;
 var volume = 0;
@@ -11,7 +10,6 @@ function preload() {
   intro = loadSound("./assets/TG1_bumper.mp3");
   space = loadImage("./assets/space.jpg")
   spaceship = loadImage("./assets/spaceship.png")
-  stop = loadImage("./assets/playpause.png")
   play = loadImage("./assets/playstop.png")
 }
 
@@ -23,14 +21,6 @@ function setup() {
 }
 
 function mousePressed() {
-  if (intro.isPlaying() && (mouseX > width / 10 && mouseX < width / 10 + width / 20) && (mouseY > width / 40 && mouseY < width / 20 + width / 20)) {
-    intro.pause();
-  }
-
-  else if ((mouseX > width / 10 && mouseX < width / 10 + width / 20) && (mouseY > width / 40 && mouseY < width / 20 + width / 20)) {
-    intro.play();
-  }
-
   if (intro.isPlaying() && (mouseX > width / 40 && mouseX < width / 40 + width / 20) && (mouseY > width / 40 && mouseY < width / 20 + width / 20)) {
     intro.stop();
     speed = 0;
@@ -48,7 +38,6 @@ function draw() {
   imageMode(CENTER);
   image(space, width / 2, height / 2, width, width / 16 * 9);
   imageMode(CORNER);
-  image(stop, width / 10, width / 40, width / 20, width / 20);
   image(play, width / 40, width / 40, width / 20, width / 20);
 
   var spectrum = fft.analyze();
