@@ -1,15 +1,18 @@
 var intro;
 var space;
-var replay;
-var pause;
+var spaceship;
+var stop;
+var play;
+var help = 0;
 var volume = 0;
-var ballSpeed = -25;
+var speed = 0;
 
 function preload() {
   intro = loadSound("./assets/TG1_bumper.mp3");
   space = loadImage("./assets/space.jpg")
-  replay = loadImage("./assets/replay.png")
-  pause = loadImage("./assets/pause.png")
+  spaceship = loadImage("./assets/spaceship.png")
+  stop = loadImage("./assets/stop.png")
+  play = loadImage("./assets/play.png")
 }
 
 function setup() {
@@ -20,10 +23,13 @@ function setup() {
 }
 
 function mousePressed() {
-  if (intro.isPlaying() && (mouseX > width / 40 && mouseX < width / 40 + width / 17) && (mouseY > width / 40 && mouseY < width / 20 + width / 20)) {
-    intro.pause();
-  } else if((mouseX > width / 40 && mouseX < width / 40 + width / 17) && (mouseY > width / 40 && mouseY < width / 20 + width / 20)){
+  if (intro.isPlaying() && (mouseX > width / 10 && mouseX < width / 10 + width / 20) && (mouseY > width / 40 && mouseY < width / 20 + width / 20)) {
+    intro.stop();
+    speed = 0;
+
+  } else if((mouseX > width / 40 && mouseX < width / 40 + width / 20) && (mouseY > width / 40 && mouseY < width / 20 + width / 20)){
     intro.play();
+    speed = 0;
   }
 }
 
@@ -33,13 +39,13 @@ function draw() {
   imageMode(CENTER);
   image(space, width / 2, height / 2, width, width / 16 * 9);
   imageMode(CORNER);
-  image(replay, width / 10, width / 40, width / 17, width / 20);
-  image(pause, width / 40, width / 40, width / 20, width / 20);
+  image(stop, width / 10, width / 40, width / 20, width / 20);
+  image(play, width / 40, width / 40, width / 20, width / 20);
 
   var spectrum = fft.analyze();
 
   if (intro.isPlaying()) {
-    ballSpeed++;
+    speed++;
   } else {
     reset = 0;
   }
@@ -56,10 +62,8 @@ function draw() {
   shadow = map(volume, 0, 1, 50, 0)
   volume = map(volume, 0, 1, 0, height)
 
-  fill(150);
-  ellipse(ballSpeed * 4, height / 4 * 2 + 75, shadow, shadow / 2);
-  fill('white');
-  ellipse(ballSpeed * 4, height / 4 * 2 - volume, 50);
+  imageMode(CENTER);
+  image(spaceship, speed * 4 - 220, height/4*2 - volume, width / 5, width / 5);
 
 }
 
