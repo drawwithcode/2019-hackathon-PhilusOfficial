@@ -36,7 +36,7 @@ function mousePressed() {
 function draw() {
 
   imageMode(CENTER);
-  image(space, width / 2, height / 2, width, width / 16 * 9);
+  image(space, width / 2, height / 2, height/9*20, height);
   imageMode(CORNER);
   image(play, width / 40, width / 40, width / 20, width / 20);
 
