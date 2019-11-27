@@ -28,7 +28,7 @@ function mousePressed() {
     speed = 0;
   }
 
-  if((mouseX > width / 40 && mouseX < width / 40 + width / 20) && (mouseY > width / 40 && mouseY < width / 20 + width / 20)){
+    else if((mouseX > width / 40 && mouseX < width / 40 + width / 20) && (mouseY > width / 40 && mouseY < width / 20 + width / 20)){
     intro.play();
     speed = 0;
   }
