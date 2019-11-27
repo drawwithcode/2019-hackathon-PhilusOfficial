@@ -26,8 +26,8 @@ function mousePressed() {
 
 
 function draw() {
-  var replay = image(replay, width/20, width/20, width/17, width/20);
-  replay.mousePressed(function() {
+  var button = select(".button");
+  button.mousePressed(function(replay) {
     if (intro.isPlaying()) {
       intro.pause();
     } else{
